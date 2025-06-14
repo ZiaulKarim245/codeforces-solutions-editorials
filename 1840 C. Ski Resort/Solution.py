@@ -1,3 +1,4 @@
+# Counter Based techniques
 t = int(input())
 for _ in range(t):
     n, k, q = map(int, input().split())
@@ -14,3 +15,17 @@ for _ in range(t):
     if cnt >= k:
             ans += (cnt - k + 1) * (cnt - k + 2) // 2
     print(ans)
+
+# Two Pointer / Sliding Window
+left = 0
+while left < n:
+    if wea_for[left] > q:
+        left += 1
+        continue
+    right = left
+    while right < n and wea_for[right] <= q:
+        right += 1
+    length = right - left
+    if length >= k:
+        ans += (length - k + 1) * (length - k + 2) // 2
+    left = right
